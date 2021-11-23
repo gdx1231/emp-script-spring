@@ -37,10 +37,11 @@ public class EwaStyleController {
 	@ResponseBody
 	public String staticResources(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+
 		UUrl u = new UUrl(request);
 
-		String path = u.getName();
-		 
+		String path = u.getName().replace("/EmpScriptV2/", "/");
+
 		Resource r = Resources.getResource(path);
 		response.setStatus(r.getStatus());
 		if (r.getStatus() != 200) {
@@ -55,6 +56,7 @@ public class EwaStyleController {
 			response.getWriter().print(r.getContent());
 		}
 		return null;
+
 	}
 
 	/**
