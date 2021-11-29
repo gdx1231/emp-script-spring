@@ -1,4 +1,4 @@
-package com.gdxsoft.easyweb.spring.restful.controllers;
+package com.gdxsoft.easyweb.spring.restful.cloud.controllers;
 
 import java.io.IOException;
 import java.util.Enumeration;

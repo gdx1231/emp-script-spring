@@ -36,7 +36,8 @@ public class EwaDefineController {
 	/**
 	 * URL of operation configurations
 	 */
-	@RequestMapping({ "/EWA_DEFINE/cgi-bin/xml/", "/EWA_DEFINE/cgi-bin/xml/index.jsp" })
+	@RequestMapping({ "/EWA_DEFINE/cgi-bin/xml/", "/EWA_DEFINE//cgi-bin/xml/", "/EWA_DEFINE/cgi-bin/xml/index.jsp",
+			"/EWA_DEFINE//cgi-bin/xml/index.jsp" })
 	@ResponseBody
 	public String ewaDefineXml(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
