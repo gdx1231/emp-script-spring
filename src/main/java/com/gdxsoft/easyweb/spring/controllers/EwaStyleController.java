@@ -18,7 +18,6 @@ import com.gdxsoft.easyweb.define.servlets.ServletWorkflow;
 import com.gdxsoft.easyweb.resources.Resource;
 import com.gdxsoft.easyweb.resources.Resources;
 import com.gdxsoft.easyweb.script.RequestValue;
-import com.gdxsoft.easyweb.script.servlets.ServletCode;
 import com.gdxsoft.easyweb.script.servlets.ServletError;
 import com.gdxsoft.easyweb.script.servlets.ServletMain;
 import com.gdxsoft.easyweb.script.servlets.ServletResources;
@@ -60,7 +59,7 @@ public class EwaStyleController {
 	}
 
 	/**
-	 * EWA Script
+	 * EWA Script 
 	 */
 	@RequestMapping({ "/EWA_STYLE/cgi-bin/", "/EWA_STYLE/cgi-bin/index.jsp", "/ewa", "/ewa1" })
 	@ResponseBody
@@ -82,15 +81,14 @@ public class EwaStyleController {
 	}
 
 	/**
-	 * ValidCode
+	 * ValidCode ，用EWA Script 的 EWA_AJAX=ValidCode进行替换
 	 */
-	@RequestMapping({ "/EWA_STYLE/cgi-bin/_co_/", "/EWA_STYLE/cgi-bin/_co_/index.jsp" })
-	@ResponseBody
-	public String co(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ServletCode r = new ServletCode();
-		r.doGet(request, response);
-		return null;
-	}
+	/*
+	 * @RequestMapping({ "/EWA_STYLE/cgi-bin/_co_/", "/EWA_STYLE/cgi-bin/_co_/index.jsp" })
+	 * 
+	 * @ResponseBody public String co(HttpServletRequest request, HttpServletResponse response) throws ServletException,
+	 * IOException { ServletCode r = new ServletCode(); r.doGet(request, response); return null; }
+	 */
 
 	/**
 	 * tree status
