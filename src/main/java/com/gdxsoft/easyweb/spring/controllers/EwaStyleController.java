@@ -15,8 +15,6 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.gdxsoft.easyweb.define.servlets.ServletWorkflow;
-import com.gdxsoft.easyweb.resources.Resource;
-import com.gdxsoft.easyweb.resources.Resources;
 import com.gdxsoft.easyweb.script.RequestValue;
 import com.gdxsoft.easyweb.script.servlets.ServletError;
 import com.gdxsoft.easyweb.script.servlets.ServletMain;
@@ -24,39 +22,9 @@ import com.gdxsoft.easyweb.script.servlets.ServletResources;
 import com.gdxsoft.easyweb.script.servlets.ServletStatus;
 import com.gdxsoft.easyweb.spring.EwaSpingUpload;
 import com.gdxsoft.easyweb.utils.UJSon;
-import com.gdxsoft.easyweb.utils.UUrl;
 
 @Controller
 public class EwaStyleController {
-
-	/**
-	 * EWA Script
-	 */
-	@RequestMapping({ "/EmpScriptV2/**" })
-	@ResponseBody
-	public String staticResources(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-
-		UUrl u = new UUrl(request);
-
-		String path = u.getName().replace("/EmpScriptV2/", "/");
-
-		Resource r = Resources.getResource(path);
-		response.setStatus(r.getStatus());
-		if (r.getStatus() != 200) {
-			return null;
-		}
-		response.setContentType(r.getType());
-		response.addHeader("cache-control", "max-age=86400");
-		if (r.isBinary()) {
-			response.getOutputStream().write(r.getBuffer());
-		} else {
-			response.setCharacterEncoding("utf-8");
-			response.getWriter().print(r.getContent());
-		}
-		return null;
-
-	}
 
 	/**
 	 * EWA Script 
