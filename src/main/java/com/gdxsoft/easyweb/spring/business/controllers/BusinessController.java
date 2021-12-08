@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.gdxsoft.easyweb.script.RequestValue;
 import com.gdxsoft.web.acl.Login;
-import com.gdxsoft.web.http.HttpOaFileView;
 import com.gdxsoft.web.http.HttpQRCode;
 import com.gdxsoft.web.module.HtModBusiness;
 import com.gdxsoft.web.module.HtModule;
