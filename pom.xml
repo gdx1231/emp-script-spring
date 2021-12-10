@@ -1,9 +1,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<url>https://github.com/gdx1231/emp-script-spring</url>
+	
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.gdxsoft.easyweb</groupId>
 	<artifactId>emp-script-spring</artifactId>
-	<version>1.1.1</version>
+	<version>1.1.2</version>
 	<name>Easy Web Application Builder Spring</name>
 	<description>Web系统快速成型系统-SpingBoot调用</description>
 	<dependencies>
