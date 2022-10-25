@@ -13,8 +13,6 @@ import org.springframework.ui.Model;
 
 import com.gdxsoft.easyweb.data.DTTable;
 import com.gdxsoft.easyweb.script.RequestValue;
-import com.gdxsoft.web.dao.NwsCat;
-import com.gdxsoft.web.dao.NwsCatDao;
 import com.gdxsoft.web.dao.SiteMain;
 import com.gdxsoft.web.dao.SiteNavCat;
 import com.gdxsoft.web.site.Site;
