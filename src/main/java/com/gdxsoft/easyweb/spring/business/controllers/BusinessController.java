@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.gdxsoft.easyweb.script.RequestValue;
 import com.gdxsoft.web.acl.Login;
+import com.gdxsoft.web.http.HttpOaFileView;
+import com.gdxsoft.web.http.HttpOaSysAttView;
 import com.gdxsoft.web.http.HttpQRCode;
 import com.gdxsoft.web.module.HtModBusiness;
 import com.gdxsoft.web.module.HtModule;
@@ -25,7 +27,7 @@ public class BusinessController {
 	 * @param response
 	 * @return
 	 */
-	@RequestMapping({ "/business/", "/business/index", "/business/index.jsp" })
+	@RequestMapping({ "/business", "/business/", "/business/index", "/business/index.jsp" })
 	@ResponseBody
 	public String businessIndex(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -106,7 +108,39 @@ public class BusinessController {
 	
 	
 	
-	
+	/**
+	 * 在线查看或下载oa文件
+	 * 
+	 * @param request
+	 * @param response
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping({ "/business/oa-file-view", "/business/oa-file-view.jsp" })
+	@ResponseBody
+	public String oaFileView(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String pdfjs = request.getContextPath() + "/opensource/pdfjs/pdfjs-2.10.377-dist/web/viewer.html";
+		HttpOaFileView o = new HttpOaFileView(pdfjs);
+
+		return o.response(request, response);
+	}
+
+	/**
+	 * 在线查看或下载 sys_atts 文件
+	 * 
+	 * @param request
+	 * @param response
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping({ "/business/sys-att", "/business/sys-att.jsp" })
+	@ResponseBody
+	public String oaSysAttView(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String pdfjs = request.getContextPath() + "/opensource/pdfjs/pdfjs-2.10.377-dist/web/viewer.html";
+		HttpOaSysAttView o = new HttpOaSysAttView(pdfjs);
+
+		return o.response(request, response);
+	}
 	
 	
 }
