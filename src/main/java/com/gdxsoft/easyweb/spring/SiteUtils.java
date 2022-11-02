@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import com.gdxsoft.easyweb.data.DTTable;
 import com.gdxsoft.easyweb.script.HtmlControl;
 import com.gdxsoft.easyweb.script.RequestValue;
+import com.gdxsoft.easyweb.script.display.frame.FrameParameters;
 import com.gdxsoft.easyweb.utils.UImages;
 import com.gdxsoft.easyweb.utils.UObjectValue;
 import com.gdxsoft.easyweb.utils.UPath;
@@ -46,8 +47,8 @@ public class SiteUtils {
 		this.rv = new RequestValue(request);
 	}
 
-	public String newsCoverPic( HttpServletResponse response, String resize) throws IOException {
-		String transparent= "/EmpScriptV2/EWA_STYLE/images/transparent.png";
+	public String newsCoverPic(HttpServletResponse response, String resize) throws IOException {
+		String transparent = "/EmpScriptV2/EWA_STYLE/images/transparent.png";
 		String sql = "select nws_head_pic from nws_main where nws_guid = @nws_guid";
 		DTTable tb = DTTable.getJdbcTable(sql, "", rv);
 		if (tb.getCount() == 0) {
@@ -81,7 +82,6 @@ public class SiteUtils {
 			response.addHeader("ETag", "W/" + md5);
 		}
 
-
 		String[] resizes = resize.toLowerCase().split("x");
 		int w = Integer.parseInt(resizes[0]);
 		int h = Integer.parseInt(resizes[1]);
@@ -98,7 +98,7 @@ public class SiteUtils {
 		}
 		return null;
 	}
-	
+
 	public void handleKeyWords(Model model, String keyWords, String channelLink) {
 		if (keyWords == null || keyWords.trim().length() == 0) {
 			return;
@@ -228,9 +228,10 @@ public class SiteUtils {
 		int catId = cat.getNwsCatId().intValue();
 		rv.addOrUpdateValue("cid", cat.getNwsCatUnid());
 
-		String rtName = this.nwsCatAndDocByCatId(model, catId, nwsGuid, linkExp);
+		String newsLink = linkExp + ".[NWS_GUID].html";
+		String rtName = this.nwsCatAndDocByCatId(model, catId, nwsGuid, newsLink);
 
-		model.addAttribute("channelLink", rv.getLang() + "/" + rtName);
+		model.addAttribute("channelLink", linkExp);
 		model.addAttribute("channelText", this.isEn() ? cat.getNwsCatNameEn() : cat.getNwsCatName());
 		return rtName;
 	}
@@ -257,9 +258,10 @@ public class SiteUtils {
 		// 获取第一篇文章
 		String nwsGuid = this.getFirstDocGuidOfCatalog(catId);
 
-		String rtName = this.nwsCatAndDocByCatId(model, catId, nwsGuid, linkExp);
+		String newsLink = linkExp + ".[NWS_GUID].html";
+		String rtName = this.nwsCatAndDocByCatId(model, catId, nwsGuid, newsLink);
 
-		model.addAttribute("channelLink", rv.getLang() + "/" + rtName);
+		model.addAttribute("channelLink", linkExp);
 		model.addAttribute("channelText", this.isEn() ? cat.getNwsCatNameEn() : cat.getNwsCatName());
 		return rtName;
 	}
@@ -287,6 +289,94 @@ public class SiteUtils {
 		String nwsGuid = tb1.getCell(0, 0).toString();
 		return nwsGuid;
 	}
+	/**
+	 * 获取目录下的第一篇文章
+	 * 
+	 * @param catId
+	 * @return
+	 */
+	public String getFirstDocGuidOfCatalog(long catId) {
+		// 找到第一篇文章
+		String sql1 = "select nws_guid from v_nws_main_cat where NWS_CAT_ID=" + catId
+				+ "  AND NWS_TAG = 'WEB_NWS_DLV' ";
+		if (this.isEn()) {
+			sql1 += " and nws_auth1 = 'en'";
+		} else {
+			sql1 += " and nws_auth1 != 'en'";
+		}
+		sql1 += " order by NRM_ORD limit 1";
+		DTTable tb1 = DTTable.getJdbcTable(sql1);
+		if (tb1.getCount() == 0) {
+			return null;
+		}
+		String nwsGuid = tb1.getCell(0, 0).toString();
+		return nwsGuid;
+	}
+	/**
+	 * 文章信息
+	 * 
+	 * @param nwsGuid
+	 * @return
+	 */
+	public HtmlControl nwsNewInfo(String nwsGuid) {
+		// 文章信息
+		String itemName1 = "nws_main.F.V";
+		HtmlControl ht1 = new HtmlControl();
+		String paras1 = "uid=" + nwsGuid;
+		ht1.init(NEWS_XMLNAME, itemName1, paras1, this.rv, null);
+
+		return ht1;
+	}
+
+	/**
+	 * 关联附件
+	 * 
+	 * @param nwsGuid
+	 * @return
+	 */
+	public HtmlControl nwsNewInfoAttachements(String nwsGuid) {
+		// 关联附件
+		String itemName2 = "NWS_ATT.Lf.V";
+		HtmlControl ht2 = new HtmlControl();
+		String paras2 = "nws_guid=" + nwsGuid;
+		ht2.init(NEWS_XMLNAME, itemName2, paras2, this.rv, null);
+
+		return ht2;
+	}
+
+	/**
+	 * 当前新闻目录下的文章列表
+	 * 
+	 * @param catId
+	 * @param channel
+	 * @return
+	 */
+	public HtmlControl nwsNewsList(long catId, String channel) {
+		HtmlControl ht = new HtmlControl();
+		String itemName = "nws_main.LF.title";
+		// 添加上语言属性的的 link
+		String paras = "NWS_CAT_ID=" + catId + "&channel=" + channel + "&" + FrameParameters.EWA_SKIP_TEST1 + "=1&"
+				+ FrameParameters.EWA_APP + "=1";
+		ht.init(NEWS_XMLNAME, itemName, paras, this.rv, null);
+		return ht;
+	}
+
+	/**
+	 * 当前新闻目录下的文章列表
+	 * 
+	 * @param catId
+	 * @param channel
+	 * @return
+	 */
+	public HtmlControl nwsNewsList(int catId, String channel) {
+		HtmlControl ht = new HtmlControl();
+		String itemName = "nws_main.LF.title";
+		// 添加上语言属性的的 link
+		String paras = "NWS_CAT_ID=" + catId + "&channel=" + channel + "&" + FrameParameters.EWA_SKIP_TEST1 + "=1&"
+				+ FrameParameters.EWA_APP + "=1";
+		ht.init(NEWS_XMLNAME, itemName, paras, this.rv, null);
+		return ht;
+	}
 
 	/**
 	 * 
@@ -310,25 +400,15 @@ public class SiteUtils {
 		}
 		model.addAttribute("nwsGuid", nwsGuid);
 
-		HtmlControl ht = new HtmlControl();
-
-		String itemName = "nws_main.LF.title";
-
-		// 添加上语言属性的的 link
-		String paras = "NWS_CAT_ID=" + catId + "&channel=" + channel;
-
-		ht.init(NEWS_XMLNAME, itemName, paras, this.rv, null);
-		model.addAttribute("ewa", ht);
+		HtmlControl ht = this.nwsNewsList(catId, channel);
 		this.ewa = ht;
+		model.addAttribute("ewa", ht);
 		if (this.rv.s("ewa_ajax") != null) {
 			return "ewaAjax";
 		}
 
 		// 文章信息
-		String itemName1 = "nws_main.F.V";
-		HtmlControl ht1 = new HtmlControl();
-		String paras1 = "uid=" + nwsGuid;
-		ht1.init(NEWS_XMLNAME, itemName1, paras1, this.rv, null);
+		HtmlControl ht1 = this.nwsNewInfo(nwsGuid);
 		model.addAttribute("ewa1", ht1);
 
 		this.ewa1 = ht1;
@@ -343,17 +423,14 @@ public class SiteUtils {
 		} catch (Exception e) {
 		}
 
-		// 关联附件
-		String itemName2 = "NWS_ATT.Lf.V";
-		HtmlControl ht2 = new HtmlControl();
-		String paras2 = "nws_guid=" + nwsGuid;
-		ht2.init(NEWS_XMLNAME, itemName2, paras2, this.rv, null);
+		// 关联附件 "NWS_ATT.Lf.V";
+		HtmlControl ht2 = this.nwsNewInfoAttachements(nwsGuid);
 		this.ewa2 = ht2;
 		DTTable tbAtts = ht2.getLastTable();
 		if (tbAtts.getCount() > 0) {
 			model.addAttribute("ewa2", ht2);
 		} else {
-			// 输出 html
+			// 无内容输出 html
 			FakeEwa f = new FakeEwa();
 			model.addAttribute("ewa2", f);
 		}

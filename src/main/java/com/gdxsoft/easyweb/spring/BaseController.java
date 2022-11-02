@@ -23,6 +23,37 @@ public class BaseController {
 	private static Map<String, Object> CACHE = new ConcurrentHashMap<>();
 
 	/**
+	 * 调用新闻
+	 * 
+	 * @param ewaLang   语言
+	 * @param nwsCatTag 标记
+	 * @param nwsGuid   文章编号
+	 * @param linkName  链接名称
+	 * @param request
+	 * @param response
+	 * @param model
+	 * @return 模板
+	 */
+	public String news(String ewaLang, String nwsCatTag, String nwsGuid, String linkName, HttpServletRequest request,
+			HttpServletResponse response, Model model) {
+		request.setAttribute("ewa_lang", ewaLang);
+
+		SiteUtils su = this.commonData(request, response, model);
+
+		String link = request.getContextPath() + "/" + ewaLang + "/" + linkName;
+		
+		String retName;
+		if (nwsGuid == null) {
+			// 显示第一篇文章
+			retName = su.nwsCatAndDocByNwsCatTag(model, nwsCatTag, link);
+		} else {
+			retName = su.nwsCatAndDocByNwsCatTag(model, nwsCatTag, nwsGuid, link);
+		}
+		model.addAttribute("nwsCatTag", nwsCatTag);
+		return retName;
+	}
+
+	/**
 	 * 跳转到 Error页面
 	 * 
 	 * @param msg
@@ -136,8 +167,8 @@ public class BaseController {
 		}
 		model.addAttribute("copyright", copyright);
 
-		String ua=su.getRv().s("sys_user_agent");
-		
+		String ua = su.getRv().s("sys_user_agent");
+
 		this.siteUtils = su;
 		return su;
 	}
