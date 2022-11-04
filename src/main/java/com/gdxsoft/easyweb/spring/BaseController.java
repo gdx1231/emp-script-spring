@@ -40,8 +40,8 @@ public class BaseController {
 
 		SiteUtils su = this.commonData(request, response, model);
 
-		String link = request.getContextPath() + "/" + ewaLang + "/" + linkName;
-		
+		String link = linkName;
+
 		String retName;
 		if (nwsGuid == null) {
 			// 显示第一篇文章
@@ -167,7 +167,7 @@ public class BaseController {
 		}
 		model.addAttribute("copyright", copyright);
 
-		String ua = su.getRv().s("sys_user_agent");
+		//String ua = su.getRv().s("sys_user_agent");
 
 		this.siteUtils = su;
 		return su;

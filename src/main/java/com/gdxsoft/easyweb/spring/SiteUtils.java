@@ -136,7 +136,7 @@ public class SiteUtils {
 
 	}
 
-	public String nwsCatAndDocByNwsCatUnid(Model model, String nwsCatUnid, String nwsGuid, String returnName) {
+	public String nwsCatAndDocByNwsCatUnid(Model model, String nwsCatUnid, String nwsGuid, String linkName) {
 		rv.addOrUpdateValue("nws_cat_Unid", nwsCatUnid);
 		String sql = "select NWS_CAT_ID, NWS_CAT_NAME, NWS_CAT_NAME_EN from nws_cat where nws_cat_Unid=@nws_cat_Unid  and SIT_ID="
 				+ this.getSite().getSiteMain().getSitId();
@@ -150,11 +150,22 @@ public class SiteUtils {
 
 		int catId = tb.getCell(0, 0).toInt();
 
-		this.nwsCatAndDocByCatId(model, catId, nwsGuid, returnName + "/" + nwsCatUnid);
+		String link = this.createLinkWithLang(linkName);
+		this.nwsCatAndDocByCatId(model, catId, nwsGuid, link);
 
-		model.addAttribute("channelLink", rv.getLang() + "/nws/" + nwsCatUnid);
+		model.addAttribute("channelLink", link);
 		model.addAttribute("channelText", tb.getCell(0, this.isEn() ? 2 : 1).toString());
-		return returnName;
+		return "nws";
+	}
+
+	/**
+	 * 连接前面附加 ContextPath/lang/
+	 * 
+	 * @param linkName
+	 * @return
+	 */
+	public String createLinkWithLang(String linkName) {
+		return this.rv.getContextPath() + "/" + this.rv.getLang() + "/" + linkName;
 	}
 
 	/**
@@ -177,22 +188,18 @@ public class SiteUtils {
 			return "error";
 		}
 
-		HtmlControl ht = new HtmlControl();
-		String xmlName = NEWS_XMLNAME;
-		String itemName = "nws_main.LF.GRID.PIC";
-
 		// 添加上语言属性的的 link
-		String channel = this.rv.getLang() + "/" + linkName;
-		String paras = "channel=" + channel;
+		String channel = this.createLinkWithLang(linkName);
 
-		ht.init(xmlName, itemName, paras, this.rv, null);
+		HtmlControl ht = this.nwsNewsGrid(nwsCatUnid, channel);
+
 		model.addAttribute("ewa", ht);
 		this.ewa = ht;
 		if (this.rv.s("ewa_ajax") != null) {
 			return "ewaAjax";
 		}
 
-		model.addAttribute("channelLink", rv.getLang() + "/nws/" + nwsCatUnid);
+		model.addAttribute("channelLink", rv.getLang() + "/news/" + nwsCatUnid);
 		model.addAttribute("channelText", tb.getCell(0, this.isEn() ? 2 : 1).toString());
 		return "nwsGrid";
 	}
@@ -228,7 +235,7 @@ public class SiteUtils {
 		int catId = cat.getNwsCatId().intValue();
 		rv.addOrUpdateValue("cid", cat.getNwsCatUnid());
 
-		String newsLink = linkExp + ".[NWS_GUID].html";
+		String newsLink = this.createLinkWithLang(linkExp);
 		String rtName = this.nwsCatAndDocByCatId(model, catId, nwsGuid, newsLink);
 
 		model.addAttribute("channelLink", linkExp);
@@ -289,6 +296,7 @@ public class SiteUtils {
 		String nwsGuid = tb1.getCell(0, 0).toString();
 		return nwsGuid;
 	}
+
 	/**
 	 * 获取目录下的第一篇文章
 	 * 
@@ -312,13 +320,14 @@ public class SiteUtils {
 		String nwsGuid = tb1.getCell(0, 0).toString();
 		return nwsGuid;
 	}
+
 	/**
 	 * 文章信息
 	 * 
 	 * @param nwsGuid
 	 * @return
 	 */
-	public HtmlControl nwsNewInfo(String nwsGuid) {
+	public HtmlControl nwsNewsInfo(String nwsGuid) {
 		// 文章信息
 		String itemName1 = "nws_main.F.V";
 		HtmlControl ht1 = new HtmlControl();
@@ -334,7 +343,7 @@ public class SiteUtils {
 	 * @param nwsGuid
 	 * @return
 	 */
-	public HtmlControl nwsNewInfoAttachements(String nwsGuid) {
+	public HtmlControl nwsNewsInfoAttachements(String nwsGuid) {
 		// 关联附件
 		String itemName2 = "NWS_ATT.Lf.V";
 		HtmlControl ht2 = new HtmlControl();
@@ -351,13 +360,33 @@ public class SiteUtils {
 	 * @param channel
 	 * @return
 	 */
-	public HtmlControl nwsNewsList(long catId, String channel) {
+	public HtmlControl nwsNewsList(String nwsCatUnid, String channel) {
 		HtmlControl ht = new HtmlControl();
 		String itemName = "nws_main.LF.title";
-		// 添加上语言属性的的 link
-		String paras = "NWS_CAT_ID=" + catId + "&channel=" + channel + "&" + FrameParameters.EWA_SKIP_TEST1 + "=1&"
-				+ FrameParameters.EWA_APP + "=1";
+
+		this.rv.addOrUpdateValue("CID", nwsCatUnid);
+		this.rv.addOrUpdateValue("channel", channel);
+		String paras = FrameParameters.EWA_SKIP_TEST1 + "=1&" + FrameParameters.EWA_APP + "=1";
 		ht.init(NEWS_XMLNAME, itemName, paras, this.rv, null);
+		return ht;
+	}
+
+	/**
+	 * 当前新闻目录下的文章列表 grid
+	 * 
+	 * @param nwsCatUnid
+	 * @param channel
+	 * @return
+	 */
+	public HtmlControl nwsNewsGrid(String nwsCatUnid, String channel) {
+		HtmlControl ht = new HtmlControl();
+		String itemName = "nws_main.LF.GRID.PIC";
+		this.rv.addOrUpdateValue("nws_cat_unid", nwsCatUnid);
+		this.rv.addOrUpdateValue("channel", channel);
+		String paras = FrameParameters.EWA_SKIP_TEST1 + "=1&" + FrameParameters.EWA_APP + "=1";
+
+		ht.init(NEWS_XMLNAME, itemName, paras, this.rv, null);
+
 		return ht;
 	}
 
@@ -369,13 +398,24 @@ public class SiteUtils {
 	 * @return
 	 */
 	public HtmlControl nwsNewsList(int catId, String channel) {
-		HtmlControl ht = new HtmlControl();
-		String itemName = "nws_main.LF.title";
-		// 添加上语言属性的的 link
-		String paras = "NWS_CAT_ID=" + catId + "&channel=" + channel + "&" + FrameParameters.EWA_SKIP_TEST1 + "=1&"
-				+ FrameParameters.EWA_APP + "=1";
-		ht.init(NEWS_XMLNAME, itemName, paras, this.rv, null);
-		return ht;
+		NwsCatDao d = new NwsCatDao();
+		NwsCat cat = d.getRecord(Long.parseLong(catId + ""));
+
+		return this.nwsNewsList(cat.getNwsCatUnid(), channel);
+	}
+
+	/**
+	 * 当前新闻目录下的文章列表
+	 * 
+	 * @param catId
+	 * @param channel
+	 * @return
+	 */
+	public HtmlControl nwsNewsList(long catId, String channel) {
+		NwsCatDao d = new NwsCatDao();
+		NwsCat cat = d.getRecord(catId);
+
+		return this.nwsNewsInfo(cat.getNwsCatUnid());
 	}
 
 	/**
@@ -408,7 +448,7 @@ public class SiteUtils {
 		}
 
 		// 文章信息
-		HtmlControl ht1 = this.nwsNewInfo(nwsGuid);
+		HtmlControl ht1 = this.nwsNewsInfo(nwsGuid);
 		model.addAttribute("ewa1", ht1);
 
 		this.ewa1 = ht1;
@@ -424,7 +464,7 @@ public class SiteUtils {
 		}
 
 		// 关联附件 "NWS_ATT.Lf.V";
-		HtmlControl ht2 = this.nwsNewInfoAttachements(nwsGuid);
+		HtmlControl ht2 = this.nwsNewsInfoAttachements(nwsGuid);
 		this.ewa2 = ht2;
 		DTTable tbAtts = ht2.getLastTable();
 		if (tbAtts.getCount() > 0) {
