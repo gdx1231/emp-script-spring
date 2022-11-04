@@ -85,12 +85,23 @@ public class SiteUtils {
 		String[] resizes = resize.toLowerCase().split("x");
 		int w = Integer.parseInt(resizes[0]);
 		int h = Integer.parseInt(resizes[1]);
-		String exitspic = f1 + "$resized/" + w + "x" + h + ".jpg";
-		String newUrl = phy + "$resized/" + w + "x" + h + ".jpg";
+
+		String accept = this.rv.getRequest().getHeader("accept");
+		String ext = "jpeg";
+		if (accept != null) {
+			if (accept.indexOf("image/webp") >= 0) {
+				ext = "webp";
+			} else if (accept.indexOf("image/heic") >= 0) {
+				ext = "heic";
+			}
+		}
+
+		String exitspic = f1 + "$resized/" + w + "x" + h + "." + ext;
+		String newUrl = phy + "$resized/" + w + "x" + h + "." + ext;
 		File fileSmallPic = new File(exitspic);
 		try {
 			if (!fileSmallPic.exists()) {
-				UImages.createSmallImage(f1, w, h);
+				UImages.createSmallImage(f1, w, h, ext, 80);
 			}
 			response.sendRedirect(newUrl);
 		} catch (Exception err) {
