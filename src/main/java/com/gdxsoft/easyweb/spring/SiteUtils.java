@@ -265,7 +265,7 @@ public class SiteUtils {
 		// 获取第一篇文章
 		String nwsGuid = this.getFirstDocGuidOfCatalog(catId);
 
-		String newsLink = linkExp + ".[NWS_GUID].html";
+		String newsLink = this.createLinkWithLang(linkExp);
 		String rtName = this.nwsCatAndDocByCatId(model, catId, nwsGuid, newsLink);
 
 		model.addAttribute("channelLink", linkExp);
@@ -280,21 +280,20 @@ public class SiteUtils {
 	 * @return
 	 */
 	public String getFirstDocGuidOfCatalog(int catId) {
-		// 找到第一篇文章
-		String sql1 = "select nws_guid from v_nws_main_cat where NWS_CAT_ID=" + catId
-				+ "  AND NWS_TAG = 'WEB_NWS_DLV' ";
-		if (this.isEn()) {
-			sql1 += " and nws_auth1 = 'en'";
-		} else {
-			sql1 += " and nws_auth1 != 'en'";
-		}
-		sql1 += " order by NRM_ORD limit 1";
-		DTTable tb1 = DTTable.getJdbcTable(sql1);
+		this.rv.addOrUpdateValue("ewa_ajax", "json");
+		HtmlControl ht = this.nwsNewsList(catId, "");
+		this.rv.getPageValues().remove("ewa_ajax");
+		ht.getHtml();
+		DTTable tb1 = ht.getLastTable();
 		if (tb1.getCount() == 0) {
 			return null;
 		}
-		String nwsGuid = tb1.getCell(0, 0).toString();
-		return nwsGuid;
+		try {
+			return tb1.getCell(0, "nws_guid").toString();
+		} catch (Exception e) {
+			return e.getLocalizedMessage();
+		}
+
 	}
 
 	/**
@@ -305,20 +304,25 @@ public class SiteUtils {
 	 */
 	public String getFirstDocGuidOfCatalog(long catId) {
 		// 找到第一篇文章
-		String sql1 = "select nws_guid from v_nws_main_cat where NWS_CAT_ID=" + catId
-				+ "  AND NWS_TAG = 'WEB_NWS_DLV' ";
-		if (this.isEn()) {
-			sql1 += " and nws_auth1 = 'en'";
-		} else {
-			sql1 += " and nws_auth1 != 'en'";
-		}
-		sql1 += " order by NRM_ORD limit 1";
-		DTTable tb1 = DTTable.getJdbcTable(sql1);
+		/*
+		 * String sql1 = "select nws_guid from v_nws_main_cat where NWS_CAT_ID=" + catId
+		 * + "  AND NWS_TAG = 'WEB_NWS_DLV' "; if (this.isEn()) { sql1 +=
+		 * " and nws_auth1 = 'en'"; } else { sql1 += " and nws_auth1 != 'en'"; } sql1 +=
+		 * " order by NRM_ORD limit 1"; DTTable tb1 = DTTable.getJdbcTable(sql1);
+		 */
+		this.rv.addOrUpdateValue("ewa_ajax", "json");
+		HtmlControl ht = this.nwsNewsList(catId, "");
+		this.rv.getPageValues().remove("ewa_ajax");
+		ht.getHtml();
+		DTTable tb1 = ht.getLastTable();
 		if (tb1.getCount() == 0) {
 			return null;
 		}
-		String nwsGuid = tb1.getCell(0, 0).toString();
-		return nwsGuid;
+		try {
+			return tb1.getCell(0, "nws_guid").toString();
+		} catch (Exception e) {
+			return e.getLocalizedMessage();
+		}
 	}
 
 	/**
