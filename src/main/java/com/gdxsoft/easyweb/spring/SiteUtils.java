@@ -3,6 +3,7 @@ package com.gdxsoft.easyweb.spring;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -145,6 +146,19 @@ public class SiteUtils {
 			return al.get(0);
 		}
 
+	}
+
+	public List<NwsCat> getChildrenNwsCats(Object nwsCatId) {
+		int siteId = this.getSite().getSiteMain().getSitId();
+		NwsCatDao d = new NwsCatDao();
+		RequestValue rv = this.getRv();
+		rv.addOrUpdateValue("nws_Cat_Id", nwsCatId);
+		rv.addOrUpdateValue("site_id", siteId);
+		d.setRv(rv);
+		String where = " nws_cat_id = @nws_cat_id and nws_cat_status='USED' and sit_id=@site_id";
+
+		ArrayList<NwsCat> al = d.getRecords(where);
+		return al;
 	}
 
 	public String nwsCatAndDocByNwsCatUnid(Model model, String nwsCatUnid, String nwsGuid, String linkName) {
@@ -404,6 +418,51 @@ public class SiteUtils {
 
 		return ht;
 	}
+
+	/**
+	 * 下级目录列表
+	 * 
+	 * @param nwsCatUnid
+	 * @param channel
+	 * @return
+	 */
+	public HtmlControl nwsCatList(Object nwsCatPid, String catLink) {
+		HtmlControl ht = new HtmlControl();
+		String itemName = "nws_cat.lf.v";
+		this.rv.addOrUpdateValue("sit_id", this.getSite().getSiteMain().getSitId());
+		this.rv.addOrUpdateValue("nws_cat_pid", nwsCatPid);
+		this.rv.addOrUpdateValue("cat_link", catLink);
+		String paras = FrameParameters.EWA_SKIP_TEST1 + "=1&" + FrameParameters.EWA_APP + "=1";
+
+		ht.init(NEWS_XMLNAME, itemName, paras, this.rv, null);
+
+		return ht;
+	}
+	/**
+	 *  获得下级所有目录和文章清单编号
+	 * @param nwsCatPid 上级目录编号
+	 * @param docsLength 下级文章显示数量
+	 * @param catLink 目录连接
+	 * @param docLink 文章连接
+	 * @return
+	 */
+	public HtmlControl nwsSubCatsWidthSubDocList(Object nwsCatPid, int docsLength, String catLink, String docLink) {
+		HtmlControl ht = new HtmlControl();
+		String itemName = "nws_cat.grid.withSubs";
+		this.rv.addOrUpdateValue("sit_id", this.getSite().getSiteMain().getSitId());
+		this.rv.addOrUpdateValue("nws_cat_pid", nwsCatPid);
+		//  文章清单列表
+		this.rv.addOrUpdateValue("docs_length", docsLength);
+		this.rv.addOrUpdateValue("cat_link", catLink);
+		this.rv.addOrUpdateValue("channel", docLink);
+		String paras = FrameParameters.EWA_SKIP_TEST1 + "=1&" + FrameParameters.EWA_APP + "=1";
+
+		ht.init(NEWS_XMLNAME, itemName, paras, this.rv, null);
+
+		return ht;
+	}
+	
+	
 
 	/**
 	 * 当前新闻目录下的文章列表

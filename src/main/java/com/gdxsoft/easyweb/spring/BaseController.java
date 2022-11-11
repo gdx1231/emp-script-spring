@@ -75,6 +75,7 @@ public class BaseController {
 		SiteUtils su = new SiteUtils(request);
 
 		if (su.getRv().s("EWA_AJAX") != null && !"INSTALL".equalsIgnoreCase(su.getRv().s("EWA_AJAX"))) {
+			this.siteUtils = su;
 			return su;
 		}
 
