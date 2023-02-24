@@ -10,13 +10,18 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.gdxsoft.easyweb.script.PageValue;
+import com.gdxsoft.easyweb.script.PageValueTag;
 import com.gdxsoft.easyweb.script.RequestValue;
+import com.gdxsoft.easyweb.script.display.frame.FrameParameters;
+import com.gdxsoft.easyweb.utils.UJSon;
 import com.gdxsoft.web.acl.Login;
 import com.gdxsoft.web.http.HttpOaFileView;
 import com.gdxsoft.web.http.HttpOaSysAttView;
 import com.gdxsoft.web.http.HttpQRCode;
 import com.gdxsoft.web.module.HtModBusiness;
 import com.gdxsoft.web.module.HtModule;
+import com.gdxsoft.web.user.ValidBase;
 
 @Controller
 public class BusinessController {
@@ -54,13 +59,43 @@ public class BusinessController {
 	public String businessLogin(HttpServletRequest request, HttpServletResponse response) {
 		HtModule m = HtModBusiness.getIntance().getModelLogin();
 
-		RequestValue rv = new RequestValue(request);
+		RequestValue rv = new RequestValue(request, request.getSession());
 		if ("ADM_USER.Frame.SysChangePwd".equalsIgnoreCase(rv.s("itemName"))) {
 			// 修改密码
 			m.setItemName("ADM_USER.Frame.SysChangePwd");
 		}
+		boolean fpLogin = rv.isNotBlank(ValidBase.FP_UNID) && rv.isNotBlank(ValidBase.FP_VALIDCODE);
+		if (fpLogin) {
+			PageValue pv = new PageValue();
+			pv.setName(FrameParameters.EWA_VALIDCODE_CHECK);
+			pv.setValue("NOT_CHECK");
+			pv.setDataType("string");
+			pv.setLength(100);
+			pv.setPVTag(PageValueTag.SYSTEM );
+			
+			rv.getPageValues().addValue(pv);
+			
+			rv.addOrUpdateValue(FrameParameters.EWA_POST, 1);
+		}
+		rv.getPageValues().remove("ADM_ID");
 
-		return m.executeHtmlControl(request, response);
+		String result = m.executeHtmlControl(rv, response);
+		if (fpLogin) {
+			// && rv.isNotBlank("ref")
+			if (m.getHtmlControl().getRequestValue().isNotBlank("ADM_ID")) { // 登录成功
+				if (rv.isNotBlank("ref")) {
+					String ref = rv.s("ref");
+					try {
+						response.sendRedirect(ref);
+						return null;
+					} catch (IOException e) {
+						return UJSon.rstFalse(e.getLocalizedMessage()).toString();
+					}
+				}
+				return UJSon.rstTrue("logined").toString();
+			}
+		}
+		return result;
 	}
 
 	/**
@@ -104,10 +139,7 @@ public class BusinessController {
 		HttpQRCode q = new HttpQRCode();
 		return q.response(request, response);
 	}
-	
-	
-	
-	
+
 	/**
 	 * 在线查看或下载oa文件
 	 * 
@@ -141,6 +173,5 @@ public class BusinessController {
 
 		return o.response(request, response);
 	}
-	
-	
+
 }
