@@ -65,7 +65,9 @@ public class EwaSpingUpload extends Upload {
 		if (super.getUploadDir() == null) {
 			throw new Exception("Fail to initialized -> UploadDir is null");
 		}
-
+		//替换上传路径的参数
+		super.replaceUploadPathParameters();
+		
 		int fileIndex = 0;
 
 		// 处理文件上传
