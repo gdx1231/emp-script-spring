@@ -5,7 +5,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.gdxsoft.easyweb</groupId>
 	<artifactId>emp-script-spring</artifactId>
-	<version>1.1.6</version>
+	<version>1.1.8</version>
 	<name>Easy Web Application Builder Spring</name>
 	<description>Web系统快速成型系统-SpingBoot调用</description>
 	<dependencies>
@@ -66,19 +66,19 @@
 		<dependency>
 			<groupId>com.gdxsoft.easyweb</groupId>
 			<artifactId>emp-script</artifactId>
-			<version>[1.1.6,]</version>
+			<version>1.1.8</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>com.gdxsoft.easyweb</groupId>
 			<artifactId>emp-script-static</artifactId>
-			<version>[1.1.6,]</version>
+			<version>1.1.8</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>com.gdxsoft.easyweb</groupId>
 			<artifactId>emp-script-web</artifactId>
-			<version>[1.1.6,]</version>
+			<version>1.1.8</version>
 			<scope>provided</scope>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
