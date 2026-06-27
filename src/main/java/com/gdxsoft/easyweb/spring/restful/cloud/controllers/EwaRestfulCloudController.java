@@ -4,15 +4,14 @@ import java.io.IOException;
 import java.util.Enumeration;
 import java.util.List;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
@@ -27,7 +26,7 @@ import org.springframework.web.client.RestTemplate;
 
 import com.gdxsoft.easyweb.conf.ConfRestful;
 import com.gdxsoft.easyweb.script.RequestValue;
-import com.gdxsoft.easyweb.script.servlets.RestfulResult;
+import com.gdxsoft.easyweb.script.restful.RestfulResult;
 import com.gdxsoft.easyweb.script.servlets.ServletRestful;
 import com.gdxsoft.easyweb.spring.EwaSpingUpload;
 import com.gdxsoft.easyweb.utils.UHtml;
@@ -48,12 +47,12 @@ public class EwaRestfulCloudController extends ServletRestful {
 
 	@Bean
 	@LoadBalanced // 负载均衡
-	public RestTemplate restTemplate(RestTemplateBuilder builder) {
-		RestTemplate restTemplate = builder.build();
+	public RestTemplate restTemplate() {
+		RestTemplate restTemplate = new RestTemplate();
 		// 忽略http !=2xx 的错误
 		restTemplate.setErrorHandler(new DefaultResponseErrorHandler() {
 			@Override
-			public void handleError(ClientHttpResponse response) throws IOException {
+			public void handleError(java.net.URI url, HttpMethod method, ClientHttpResponse response) throws IOException {
 
 			}
 		});
@@ -118,7 +117,7 @@ public class EwaRestfulCloudController extends ServletRestful {
 
 		String httpMethod = request.getMethod();
 		httpMethod = httpMethod == null ? "" : httpMethod.toUpperCase().trim();
-		HttpMethod restMethod = HttpMethod.resolve(httpMethod);
+		HttpMethod restMethod = HttpMethod.valueOf(httpMethod);
 
 		// 传递 headers
 		HttpHeaders headers = new HttpHeaders();

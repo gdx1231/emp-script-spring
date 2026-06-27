@@ -1,8 +1,8 @@
 package com.gdxsoft.easyweb.spring.web;
 
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -38,7 +38,7 @@ public class IndexController extends BaseController {
 
 		request.setAttribute("ewa_Lang", ewaLang);
 		// 用户的语言设定 APP_LANG
-		javax.servlet.http.Cookie ck = new javax.servlet.http.Cookie("APP_LANG", ewaLang);
+		jakarta.servlet.http.Cookie ck = new jakarta.servlet.http.Cookie("APP_LANG", ewaLang);
 		ck.setPath("/");
 
 		SiteUtils su = this.commonData(request, response, model);
