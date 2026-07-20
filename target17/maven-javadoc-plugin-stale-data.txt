@@ -1,0 +1,149 @@
+/opt/homebrew/opt/openjdk/libexec/openjdk.jdk/Contents/Home/bin/javadoc
+@options
+@packages
+-classpath
+'/Users/admin/.m2/repository/org/springframework/spring-core/7.0.8/spring-core-7.0.8.jar:/Users/admin/.m2/repository/commons-logging/commons-logging/1.3.5/commons-logging-1.3.5.jar:/Users/admin/.m2/repository/org/jspecify/jspecify/1.0.0/jspecify-1.0.0.jar:/Users/admin/.m2/repository/org/springframework/spring-context/7.0.8/spring-context-7.0.8.jar:/Users/admin/.m2/repository/org/springframework/spring-aop/7.0.8/spring-aop-7.0.8.jar:/Users/admin/.m2/repository/org/springframework/spring-expression/7.0.8/spring-expression-7.0.8.jar:/Users/admin/.m2/repository/io/micrometer/micrometer-observation/1.16.6/micrometer-observation-1.16.6.jar:/Users/admin/.m2/repository/io/micrometer/micrometer-commons/1.16.6/micrometer-commons-1.16.6.jar:/Users/admin/.m2/repository/org/springframework/spring-webmvc/7.0.8/spring-webmvc-7.0.8.jar:/Users/admin/.m2/repository/org/springframework/spring-web/7.0.8/spring-web-7.0.8.jar:/Users/admin/.m2/repository/org/springframework/spring-beans/7.0.8/spring-beans-7.0.8.jar:/Users/admin/.m2/repository/org/springframework/boot/spring-boot/4.1.0/spring-boot-4.1.0.jar:/Users/admin/.m2/repository/org/springframework/boot/spring-boot-autoconfigure/4.1.0/spring-boot-autoconfigure-4.1.0.jar:/Users/admin/.m2/repository/org/springframework/cloud/spring-cloud-commons/5.0.2/spring-cloud-commons-5.0.2.jar:/Users/admin/.m2/repository/org/springframework/security/spring-security-crypto/7.0.6/spring-security-crypto-7.0.6.jar:/Users/admin/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.21.4/jackson-databind-2.21.4.jar:/Users/admin/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.21/jackson-annotations-2.21.jar:/Users/admin/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.21.4/jackson-core-2.21.4.jar:/Users/admin/.m2/repository/com/gdxsoft/easyweb/emp-script-jdk17/1.1.10/emp-script-jdk17-1.1.10.jar:/Users/admin/.m2/repository/com/gdxsoft/easyweb/emp-script-utils-jdk17/1.1.10/emp-script-utils-jdk17-1.1.10.jar:/Users/admin/.m2/repository/org/json/json/20260522/json-20260522.jar:/Users/admin/.m2/repository/net/coobird/thumbnailator/0.4.21/thumbnailator-0.4.21.jar:/Users/admin/.m2/repository/org/eclipse/angus/jakarta.mail/2.0.3/jakarta.mail-2.0.3.jar:/Users/admin/.m2/repository/jakarta/activation/jakarta.activation-api/2.1.3/jakarta.activation-api-2.1.3.jar:/Users/admin/.m2/repository/org/bouncycastle/bcprov-jdk18on/1.84/bcprov-jdk18on-1.84.jar:/Users/admin/.m2/repository/org/hsqldb/hsqldb/2.7.4/hsqldb-2.7.4.jar:/Users/admin/.m2/repository/org/slf4j/slf4j-api/1.7.36/slf4j-api-1.7.36.jar:/Users/admin/.m2/repository/redis/clients/jedis/3.8.0/jedis-3.8.0.jar:/Users/admin/.m2/repository/org/apache/commons/commons-pool2/2.11.1/commons-pool2-2.11.1.jar:/Users/admin/.m2/repository/org/apache/commons/commons-lang3/3.18.0/commons-lang3-3.18.0.jar:/Users/admin/.m2/repository/org/apache/commons/commons-fileupload2-core/2.0.0-M2/commons-fileupload2-core-2.0.0-M2.jar:/Users/admin/.m2/repository/org/apache/commons/commons-fileupload2-jakarta-servlet5/2.0.0-M2/commons-fileupload2-jakarta-servlet5-2.0.0-M2.jar:/Users/admin/.m2/repository/commons-io/commons-io/2.20.0/commons-io-2.20.0.jar:/Users/admin/.m2/repository/net/sourceforge/jexcelapi/jxl/2.6.12/jxl-2.6.12.jar:/Users/admin/.m2/repository/com/zaxxer/HikariCP/4.0.3/HikariCP-4.0.3.jar:/Users/admin/.m2/repository/com/alibaba/druid/1.2.21/druid-1.2.21.jar:/Users/admin/.m2/repository/org/jsoup/jsoup/1.17.2/jsoup-1.17.2.jar:/Users/admin/.m2/repository/org/jodconverter/jodconverter-core/4.4.4/jodconverter-core-4.4.4.jar:/Users/admin/.m2/repository/com/google/code/gson/gson/2.9.1/gson-2.9.1.jar:/Users/admin/.m2/repository/org/jodconverter/jodconverter-local/4.4.4/jodconverter-local-4.4.4.jar:/Users/admin/.m2/repository/org/openoffice/juh/4.1.2/juh-4.1.2.jar:/Users/admin/.m2/repository/org/openoffice/jurt/4.1.2/jurt-4.1.2.jar:/Users/admin/.m2/repository/org/openoffice/ridl/4.1.2/ridl-4.1.2.jar:/Users/admin/.m2/repository/org/openoffice/unoil/4.1.2/unoil-4.1.2.jar:/Users/admin/.m2/repository/jdbf/jdbf/1.0/jdbf-1.0.jar:/Users/admin/.m2/repository/com/gdxsoft/easyweb/emp-script-static-jdk17/1.1.10/emp-script-static-jdk17-1.1.10.jar:/Users/admin/.m2/repository/com/google/javascript/closure-compiler/v20250706/closure-compiler-v20250706.jar:/Users/admin/.m2/repository/com/gdxsoft/easyweb/emp-script-web-jdk17/1.1.10/emp-script-web-jdk17-1.1.10.jar:/Users/admin/.m2/repository/com/sun/mail/jakarta.mail/2.0.1/jakarta.mail-2.0.1.jar:/Users/admin/.m2/repository/org/eclipse/angus/angus-activation/2.0.2/angus-activation-2.0.2.jar:/Users/admin/.m2/repository/org/graalvm/js/js-scriptengine/23.1.0/js-scriptengine-23.1.0.jar:/Users/admin/.m2/repository/org/graalvm/polyglot/polyglot/23.1.0/polyglot-23.1.0.jar:/Users/admin/.m2/repository/org/graalvm/sdk/collections/23.1.0/collections-23.1.0.jar:/Users/admin/.m2/repository/com/gdxsoft/weixin/1.0.0/weixin-1.0.0.jar:/Users/admin/.m2/repository/org/mnode/ical4j/ical4j/4.1.1/ical4j-4.1.1.jar:/Users/admin/.m2/repository/commons-codec/commons-codec/1.17.0/commons-codec-1.17.0.jar:/Users/admin/.m2/repository/org/threeten/threeten-extra/1.8.0/threeten-extra-1.8.0.jar:/Users/admin/.m2/repository/com/google/guava/guava/32.0.0-jre/guava-32.0.0-jre.jar:/Users/admin/.m2/repository/com/google/guava/failureaccess/1.0.1/failureaccess-1.0.1.jar:/Users/admin/.m2/repository/com/google/guava/listenablefuture/9999.0-empty-to-avoid-conflict-with-guava/listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar:/Users/admin/.m2/repository/com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2.jar:/Users/admin/.m2/repository/org/checkerframework/checker-qual/3.33.0/checker-qual-3.33.0.jar:/Users/admin/.m2/repository/com/google/errorprone/error_prone_annotations/2.18.0/error_prone_annotations-2.18.0.jar:/Users/admin/.m2/repository/com/google/j2objc/j2objc-annotations/2.8/j2objc-annotations-2.8.jar:/Users/admin/.m2/repository/io/swagger/swagger-annotations/1.5.20/swagger-annotations-1.5.20.jar:/Users/admin/.m2/repository/com/auth0/java-jwt/4.4.0/java-jwt-4.4.0.jar:/Users/admin/.m2/repository/com/tencentcloudapi/tencentcloud-sdk-java-sms/3.1.893/tencentcloud-sdk-java-sms-3.1.893.jar:/Users/admin/.m2/repository/com/tencentcloudapi/tencentcloud-sdk-java-common/3.1.893/tencentcloud-sdk-java-common-3.1.893.jar:/Users/admin/.m2/repository/com/squareup/okhttp3/okhttp/3.12.13/okhttp-3.12.13.jar:/Users/admin/.m2/repository/com/squareup/okio/okio/1.15.0/okio-1.15.0.jar:/Users/admin/.m2/repository/com/squareup/okhttp3/logging-interceptor/3.12.13/logging-interceptor-3.12.13.jar:/Users/admin/.m2/repository/org/ini4j/ini4j/0.5.4/ini4j-0.5.4.jar:/Users/admin/.m2/repository/com/aliyun/aliyun-java-sdk-core/4.7.3/aliyun-java-sdk-core-4.7.3.jar:/Users/admin/.m2/repository/org/apache/httpcomponents/httpclient/4.5.14/httpclient-4.5.14.jar:/Users/admin/.m2/repository/org/apache/httpcomponents/httpcore/4.4.16/httpcore-4.4.16.jar:/Users/admin/.m2/repository/javax/xml/bind/jaxb-api/2.3.1/jaxb-api-2.3.1.jar:/Users/admin/.m2/repository/javax/activation/javax.activation-api/1.2.0/javax.activation-api-1.2.0.jar:/Users/admin/.m2/repository/org/glassfish/jaxb/jaxb-runtime/4.0.5/jaxb-runtime-4.0.5.jar:/Users/admin/.m2/repository/org/glassfish/jaxb/jaxb-core/4.0.5/jaxb-core-4.0.5.jar:/Users/admin/.m2/repository/jakarta/xml/bind/jakarta.xml.bind-api/4.0.2/jakarta.xml.bind-api-4.0.2.jar:/Users/admin/.m2/repository/org/glassfish/jaxb/txw2/4.0.5/txw2-4.0.5.jar:/Users/admin/.m2/repository/com/sun/istack/istack-commons-runtime/4.1.2/istack-commons-runtime-4.1.2.jar:/Users/admin/.m2/repository/io/opentracing/opentracing-api/0.33.0/opentracing-api-0.33.0.jar:/Users/admin/.m2/repository/io/opentracing/opentracing-util/0.33.0/opentracing-util-0.33.0.jar:/Users/admin/.m2/repository/io/opentracing/opentracing-noop/0.33.0/opentracing-noop-0.33.0.jar:/Users/admin/.m2/repository/com/aliyun/aliyun-java-sdk-alidns/3.0.7/aliyun-java-sdk-alidns-3.0.7.jar:/Users/admin/.m2/repository/com/aliyun/aliyun-java-sdk-dysmsapi/1.1.0/aliyun-java-sdk-dysmsapi-1.1.0.jar:/Users/admin/.m2/repository/com/google/zxing/core/3.3.3/core-3.3.3.jar:/Users/admin/.m2/repository/org/apache/commons/commons-exec/1.5.0/commons-exec-1.5.0.jar:/Users/admin/.m2/repository/jakarta/servlet/jakarta.servlet-api/6.1.0/jakarta.servlet-api-6.1.0.jar:/Users/admin/.m2/repository/jakarta/websocket/jakarta.websocket-api/2.2.0/jakarta.websocket-api-2.2.0.jar'
+-encoding
+'UTF-8'
+-protected
+-sourcepath
+'/Users/admin/java/com.gdxsoft/emp-script-spring/src/main/java:/Users/admin/java/com.gdxsoft/emp-script-spring/target17/generated-sources/annotations'
+-Xdoclint:none
+-author
+-bottom
+'Copyright &#169; 2026 <a href="www.gdxsoft.com">gdxsoft</a>. All rights reserved.'
+-charset
+'UTF-8'
+-d
+'/Users/admin/java/com.gdxsoft/emp-script-spring/target17/apidocs'
+-docencoding
+'UTF-8'
+-doctitle
+'Easy Web Application Builder Spring 1.1.10 API'
+-use
+-version
+-windowtitle
+'Easy Web Application Builder Spring 1.1.10 API'
+com.gdxsoft.easyweb.spring.backAdmin.controllers
+com.gdxsoft.easyweb.spring
+com.gdxsoft.easyweb.spring
+com.gdxsoft.easyweb.spring.web
+com.gdxsoft.easyweb.spring.web
+com.gdxsoft.easyweb.spring.staticResources.controllers
+com.gdxsoft.easyweb.spring.business.controllers
+com.gdxsoft.easyweb.spring.business.controllers
+com.gdxsoft.easyweb.spring
+com.gdxsoft.easyweb.spring.restful.cloud.controllers
+com.gdxsoft.easyweb.spring.restful.controllers
+com.gdxsoft.easyweb.spring.restful.controllers
+com.gdxsoft.easyweb.spring.controllers
+com.gdxsoft.easyweb.spring.controllers
+com.gdxsoft.easyweb.spring
+/Users/admin/.m2/repository/org/springframework/spring-core/7.0.8/spring-core-7.0.8.jar = 1780946842000
+/Users/admin/.m2/repository/commons-logging/commons-logging/1.3.5/commons-logging-1.3.5.jar = 1738981767000
+/Users/admin/.m2/repository/org/jspecify/jspecify/1.0.0/jspecify-1.0.0.jar = 1721286551000
+/Users/admin/.m2/repository/org/springframework/spring-context/7.0.8/spring-context-7.0.8.jar = 1780948085000
+/Users/admin/.m2/repository/org/springframework/spring-aop/7.0.8/spring-aop-7.0.8.jar = 1780960925000
+/Users/admin/.m2/repository/org/springframework/spring-expression/7.0.8/spring-expression-7.0.8.jar = 1780997640000
+/Users/admin/.m2/repository/io/micrometer/micrometer-observation/1.16.6/micrometer-observation-1.16.6.jar = 1780948084000
+/Users/admin/.m2/repository/io/micrometer/micrometer-commons/1.16.6/micrometer-commons-1.16.6.jar = 1780927895000
+/Users/admin/.m2/repository/org/springframework/spring-webmvc/7.0.8/spring-webmvc-7.0.8.jar = 1780951040000
+/Users/admin/.m2/repository/org/springframework/spring-web/7.0.8/spring-web-7.0.8.jar = 1780961035000
+/Users/admin/.m2/repository/org/springframework/spring-beans/7.0.8/spring-beans-7.0.8.jar = 1780946842000
+/Users/admin/.m2/repository/org/springframework/boot/spring-boot/4.1.0/spring-boot-4.1.0.jar = 1781116216000
+/Users/admin/.m2/repository/org/springframework/boot/spring-boot-autoconfigure/4.1.0/spring-boot-autoconfigure-4.1.0.jar = 1781116215000
+/Users/admin/.m2/repository/org/springframework/cloud/spring-cloud-commons/5.0.2/spring-cloud-commons-5.0.2.jar = 1781223832000
+/Users/admin/.m2/repository/org/springframework/security/spring-security-crypto/7.0.6/spring-security-crypto-7.0.6.jar = 1781041984000
+/Users/admin/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.21.4/jackson-databind-2.21.4.jar = 1780041672000
+/Users/admin/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.21/jackson-annotations-2.21.jar = 1768781919000
+/Users/admin/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.21.4/jackson-core-2.21.4.jar = 1780063662000
+/Users/admin/.m2/repository/com/gdxsoft/easyweb/emp-script-jdk17/1.1.10/emp-script-jdk17-1.1.10.jar = 1782550548367
+/Users/admin/.m2/repository/com/gdxsoft/easyweb/emp-script-utils-jdk17/1.1.10/emp-script-utils-jdk17-1.1.10.jar = 1782550421209
+/Users/admin/.m2/repository/org/json/json/20260522/json-20260522.jar = 1779481308000
+/Users/admin/.m2/repository/net/coobird/thumbnailator/0.4.21/thumbnailator-0.4.21.jar = 1759389125000
+/Users/admin/.m2/repository/org/eclipse/angus/jakarta.mail/2.0.3/jakarta.mail-2.0.3.jar = 1709717642000
+/Users/admin/.m2/repository/jakarta/activation/jakarta.activation-api/2.1.3/jakarta.activation-api-2.1.3.jar = 1709274315000
+/Users/admin/.m2/repository/org/bouncycastle/bcprov-jdk18on/1.84/bcprov-jdk18on-1.84.jar = 1776137716000
+/Users/admin/.m2/repository/org/hsqldb/hsqldb/2.7.4/hsqldb-2.7.4.jar = 1730620407000
+/Users/admin/.m2/repository/org/slf4j/slf4j-api/1.7.36/slf4j-api-1.7.36.jar = 1705888598058
+/Users/admin/.m2/repository/redis/clients/jedis/3.8.0/jedis-3.8.0.jar = 1705888594875
+/Users/admin/.m2/repository/org/apache/commons/commons-pool2/2.11.1/commons-pool2-2.11.1.jar = 1705888613774
+/Users/admin/.m2/repository/org/apache/commons/commons-lang3/3.18.0/commons-lang3-3.18.0.jar = 1752106320000
+/Users/admin/.m2/repository/org/apache/commons/commons-fileupload2-core/2.0.0-M2/commons-fileupload2-core-2.0.0-M2.jar = 1704175740000
+/Users/admin/.m2/repository/org/apache/commons/commons-fileupload2-jakarta-servlet5/2.0.0-M2/commons-fileupload2-jakarta-servlet5-2.0.0-M2.jar = 1705996658000
+/Users/admin/.m2/repository/commons-io/commons-io/2.20.0/commons-io-2.20.0.jar = 1752887355000
+/Users/admin/.m2/repository/net/sourceforge/jexcelapi/jxl/2.6.12/jxl-2.6.12.jar = 1705888593498
+/Users/admin/.m2/repository/com/zaxxer/HikariCP/4.0.3/HikariCP-4.0.3.jar = 1705888631181
+/Users/admin/.m2/repository/com/alibaba/druid/1.2.21/druid-1.2.21.jar = 1705888629197
+/Users/admin/.m2/repository/org/jsoup/jsoup/1.17.2/jsoup-1.17.2.jar = 1705888600627
+/Users/admin/.m2/repository/org/jodconverter/jodconverter-core/4.4.4/jodconverter-core-4.4.4.jar = 1705888611847
+/Users/admin/.m2/repository/com/google/code/gson/gson/2.9.1/gson-2.9.1.jar = 1705888627995
+/Users/admin/.m2/repository/org/jodconverter/jodconverter-local/4.4.4/jodconverter-local-4.4.4.jar = 1705888611851
+/Users/admin/.m2/repository/org/openoffice/juh/4.1.2/juh-4.1.2.jar = 1705888618867
+/Users/admin/.m2/repository/org/openoffice/jurt/4.1.2/jurt-4.1.2.jar = 1705888618862
+/Users/admin/.m2/repository/org/openoffice/ridl/4.1.2/ridl-4.1.2.jar = 1705888618855
+/Users/admin/.m2/repository/org/openoffice/unoil/4.1.2/unoil-4.1.2.jar = 1705888618849
+/Users/admin/.m2/repository/jdbf/jdbf/1.0/jdbf-1.0.jar = 1705888593144
+/Users/admin/.m2/repository/com/gdxsoft/easyweb/emp-script-static-jdk17/1.1.10/emp-script-static-jdk17-1.1.10.jar = 1782550597666
+/Users/admin/.m2/repository/com/google/javascript/closure-compiler/v20250706/closure-compiler-v20250706.jar = 1752115274000
+/Users/admin/.m2/repository/com/gdxsoft/easyweb/emp-script-web-jdk17/1.1.10/emp-script-web-jdk17-1.1.10.jar = 1782550707754
+/Users/admin/.m2/repository/com/sun/mail/jakarta.mail/2.0.1/jakarta.mail-2.0.1.jar = 1617782870000
+/Users/admin/.m2/repository/org/eclipse/angus/angus-activation/2.0.2/angus-activation-2.0.2.jar = 1709702349000
+/Users/admin/.m2/repository/org/graalvm/js/js-scriptengine/23.1.0/js-scriptengine-23.1.0.jar = 1695357565000
+/Users/admin/.m2/repository/org/graalvm/polyglot/polyglot/23.1.0/polyglot-23.1.0.jar = 1695186876000
+/Users/admin/.m2/repository/org/graalvm/sdk/collections/23.1.0/collections-23.1.0.jar = 1695186874000
+/Users/admin/.m2/repository/com/gdxsoft/weixin/1.0.0/weixin-1.0.0.jar = 1705888625009
+/Users/admin/.m2/repository/org/mnode/ical4j/ical4j/4.1.1/ical4j-4.1.1.jar = 1741578022000
+/Users/admin/.m2/repository/commons-codec/commons-codec/1.17.0/commons-codec-1.17.0.jar = 1714225008000
+/Users/admin/.m2/repository/org/threeten/threeten-extra/1.8.0/threeten-extra-1.8.0.jar = 1713305066000
+/Users/admin/.m2/repository/com/google/guava/guava/32.0.0-jre/guava-32.0.0-jre.jar = 1705888627760
+/Users/admin/.m2/repository/com/google/guava/failureaccess/1.0.1/failureaccess-1.0.1.jar = 1705888627822
+/Users/admin/.m2/repository/com/google/guava/listenablefuture/9999.0-empty-to-avoid-conflict-with-guava/listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar = 1705888627824
+/Users/admin/.m2/repository/com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2.jar = 1705888628034
+/Users/admin/.m2/repository/org/checkerframework/checker-qual/3.33.0/checker-qual-3.33.0.jar = 1705888597013
+/Users/admin/.m2/repository/com/google/errorprone/error_prone_annotations/2.18.0/error_prone_annotations-2.18.0.jar = 1705888628066
+/Users/admin/.m2/repository/com/google/j2objc/j2objc-annotations/2.8/j2objc-annotations-2.8.jar = 1705888628089
+/Users/admin/.m2/repository/io/swagger/swagger-annotations/1.5.20/swagger-annotations-1.5.20.jar = 1705888619801
+/Users/admin/.m2/repository/com/auth0/java-jwt/4.4.0/java-jwt-4.4.0.jar = 1705888631242
+/Users/admin/.m2/repository/com/tencentcloudapi/tencentcloud-sdk-java-sms/3.1.893/tencentcloud-sdk-java-sms-3.1.893.jar = 1705888628804
+/Users/admin/.m2/repository/com/tencentcloudapi/tencentcloud-sdk-java-common/3.1.893/tencentcloud-sdk-java-common-3.1.893.jar = 1705888628791
+/Users/admin/.m2/repository/com/squareup/okhttp3/okhttp/3.12.13/okhttp-3.12.13.jar = 1705888623489
+/Users/admin/.m2/repository/com/squareup/okio/okio/1.15.0/okio-1.15.0.jar = 1705888623437
+/Users/admin/.m2/repository/com/squareup/okhttp3/logging-interceptor/3.12.13/logging-interceptor-3.12.13.jar = 1705888623466
+/Users/admin/.m2/repository/org/ini4j/ini4j/0.5.4/ini4j-0.5.4.jar = 1705888610746
+/Users/admin/.m2/repository/com/aliyun/aliyun-java-sdk-core/4.7.3/aliyun-java-sdk-core-4.7.3.jar = 1733290164000
+/Users/admin/.m2/repository/org/apache/httpcomponents/httpclient/4.5.14/httpclient-4.5.14.jar = 1705888611996
+/Users/admin/.m2/repository/org/apache/httpcomponents/httpcore/4.4.16/httpcore-4.4.16.jar = 1705888611978
+/Users/admin/.m2/repository/javax/xml/bind/jaxb-api/2.3.1/jaxb-api-2.3.1.jar = 1705888622396
+/Users/admin/.m2/repository/javax/activation/javax.activation-api/1.2.0/javax.activation-api-1.2.0.jar = 1705888622384
+/Users/admin/.m2/repository/org/glassfish/jaxb/jaxb-runtime/4.0.5/jaxb-runtime-4.0.5.jar = 1709841829000
+/Users/admin/.m2/repository/org/glassfish/jaxb/jaxb-core/4.0.5/jaxb-core-4.0.5.jar = 1709882566000
+/Users/admin/.m2/repository/jakarta/xml/bind/jakarta.xml.bind-api/4.0.2/jakarta.xml.bind-api-4.0.2.jar = 1709805273000
+/Users/admin/.m2/repository/org/glassfish/jaxb/txw2/4.0.5/txw2-4.0.5.jar = 1709882593000
+/Users/admin/.m2/repository/com/sun/istack/istack-commons-runtime/4.1.2/istack-commons-runtime-4.1.2.jar = 1683769494000
+/Users/admin/.m2/repository/io/opentracing/opentracing-api/0.33.0/opentracing-api-0.33.0.jar = 1557213412000
+/Users/admin/.m2/repository/io/opentracing/opentracing-util/0.33.0/opentracing-util-0.33.0.jar = 1557213411000
+/Users/admin/.m2/repository/io/opentracing/opentracing-noop/0.33.0/opentracing-noop-0.33.0.jar = 1557213411000
+/Users/admin/.m2/repository/com/aliyun/aliyun-java-sdk-alidns/3.0.7/aliyun-java-sdk-alidns-3.0.7.jar = 1683889586000
+/Users/admin/.m2/repository/com/aliyun/aliyun-java-sdk-dysmsapi/1.1.0/aliyun-java-sdk-dysmsapi-1.1.0.jar = 1705888624186
+/Users/admin/.m2/repository/com/google/zxing/core/3.3.3/core-3.3.3.jar = 1705888628123
+/Users/admin/.m2/repository/org/apache/commons/commons-exec/1.5.0/commons-exec-1.5.0.jar = 1748037440000
+/Users/admin/.m2/repository/jakarta/servlet/jakarta.servlet-api/6.1.0/jakarta.servlet-api-6.1.0.jar = 1718113527000
+/Users/admin/.m2/repository/jakarta/websocket/jakarta.websocket-api/2.2.0/jakarta.websocket-api-2.2.0.jar = 1716415418000
+/Users/admin/java/com.gdxsoft/emp-script-spring/src/main/java = 1677245642413
+/Users/admin/java/com.gdxsoft/emp-script-spring/target17/generated-sources/annotations = 1782550877096
+/Users/admin/java/com.gdxsoft/emp-script-spring/target17/apidocs/tag-search-index.js = 1782550879034
+/Users/admin/java/com.gdxsoft/emp-script-spring/target17/apidocs/overview-tree.html = 1782550879021
+/Users/admin/java/com.gdxsoft/emp-script-spring/target17/apidocs/module-search-index.js = 1782550879029
+/Users/admin/java/com.gdxsoft/emp-script-spring/target17/apidocs/index.html = 1782550879022
+/Users/admin/java/com.gdxsoft/emp-script-spring/target17/apidocs/package-search-index.js = 1782550879029
+/Users/admin/java/com.gdxsoft/emp-script-spring/target17/apidocs/serialized-form.html = 1782550878999
+/Users/admin/java/com.gdxsoft/emp-script-spring/target17/apidocs/index-all.html = 1782550879040
+/Users/admin/java/com.gdxsoft/emp-script-spring/target17/apidocs/allpackages-index.html = 1782550879029
+/Users/admin/java/com.gdxsoft/emp-script-spring/target17/apidocs/member-search-index.js = 1782550879033
+/Users/admin/java/com.gdxsoft/emp-script-spring/target17/apidocs/overview-summary.html = 1782550879041
+/Users/admin/java/com.gdxsoft/emp-script-spring/target17/apidocs/help-doc.html = 1782550879042
+/Users/admin/java/com.gdxsoft/emp-script-spring/target17/apidocs/element-list = 1782550878982
+/Users/admin/java/com.gdxsoft/emp-script-spring/target17/apidocs/search.html = 1782550879041
+/Users/admin/java/com.gdxsoft/emp-script-spring/target17/apidocs/allclasses-index.html = 1782550879028
+/Users/admin/java/com.gdxsoft/emp-script-spring/target17/apidocs/type-search-index.js = 1782550879033

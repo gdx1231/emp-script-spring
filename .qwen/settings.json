@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls *)",
+      "Bash(do *)",
+      "Bash(curl *)",
+      "Bash(done)",
+      "Bash(mvn *)",
+      "Bash(jar *)",
+      "Bash(javap *)",
+      "Bash(find *)"
+    ]
+  },
+  "$version": 4
+}

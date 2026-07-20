@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import com.gdxsoft.easyweb.conf.ConfRestful;
 import com.gdxsoft.easyweb.script.RequestValue;
-import com.gdxsoft.easyweb.script.servlets.RestfulResult;
+import com.gdxsoft.easyweb.script.restful.RestfulResult;
 import com.gdxsoft.easyweb.script.servlets.ServletRestful;
 import com.gdxsoft.easyweb.spring.EwaSpingUpload;
 
