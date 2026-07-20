@@ -1,8 +1,0 @@
-com.gdxsoft.easyweb.spring
-com.gdxsoft.easyweb.spring.backAdmin.controllers
-com.gdxsoft.easyweb.spring.business.controllers
-com.gdxsoft.easyweb.spring.controllers
-com.gdxsoft.easyweb.spring.restful.cloud.controllers
-com.gdxsoft.easyweb.spring.restful.controllers
-com.gdxsoft.easyweb.spring.staticResources.controllers
-com.gdxsoft.easyweb.spring.web

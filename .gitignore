@@ -4,6 +4,8 @@
 /build/
 *.class
 /target/
+/target*/
+/.qwen/
 *.log
 /src/test/*.*
 /.idea/
