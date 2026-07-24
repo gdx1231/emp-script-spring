@@ -64,7 +64,7 @@ public class EwaRestfulController extends ServletRestful {
 
 	@Override
 	public void handleUpload(ConfRestful conf, RequestValue rv, HttpServletRequest request,
-			RestfulResult<Object> result) {
+			HttpServletResponse response, RestfulResult<Object> result) {
 		try {
 			super.initUploadParameters(conf, rv, result);
 		} catch (Exception e2) {
