@@ -1,7 +1,7 @@
 package com.gdxsoft.easyweb.spring;
 
 import com.gdxsoft.easyweb.script.RequestValue;
-import com.gdxsoft.easyweb.script.servlets.RestfulResult;
+import com.gdxsoft.easyweb.script.restful.RestfulResult;
 import com.gdxsoft.easyweb.uploader.FileUpload;
 import com.gdxsoft.easyweb.uploader.Upload;
 import com.gdxsoft.easyweb.utils.UFile;

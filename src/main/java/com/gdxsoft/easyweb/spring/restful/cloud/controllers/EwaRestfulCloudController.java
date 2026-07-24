@@ -27,7 +27,7 @@ import org.springframework.web.client.RestTemplate;
 
 import com.gdxsoft.easyweb.conf.ConfRestful;
 import com.gdxsoft.easyweb.script.RequestValue;
-import com.gdxsoft.easyweb.script.servlets.RestfulResult;
+import com.gdxsoft.easyweb.script.restful.RestfulResult;
 import com.gdxsoft.easyweb.script.servlets.ServletRestful;
 import com.gdxsoft.easyweb.spring.EwaSpingUpload;
 import com.gdxsoft.easyweb.utils.UHtml;
@@ -63,7 +63,7 @@ public class EwaRestfulCloudController extends ServletRestful {
 
 	@Override
 	public void handleUpload(ConfRestful conf, RequestValue rv, HttpServletRequest request,
-			RestfulResult<Object> result) {
+			HttpServletResponse response, RestfulResult<Object> result) {
 		try {
 			super.initUploadParameters(conf, rv, result);
 		} catch (Exception e2) {
